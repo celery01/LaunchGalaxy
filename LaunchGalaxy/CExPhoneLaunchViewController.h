@@ -1,5 +1,5 @@
 //
-//  CExViewController.h
+//  CExPhoneLaunchViewController.h
 //  LaunchGalaxy
 //
 //  Created by Daniel Lin on 3/31/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CExViewController : UIViewController
+@interface CExPhoneLaunchViewController : UIViewController
 
 @end

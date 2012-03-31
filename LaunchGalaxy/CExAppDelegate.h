@@ -8,12 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@class CExViewController;
+@class CExOrganizerViewController;
 
 @interface CExAppDelegate : UIResponder <UIApplicationDelegate>
 
+
+
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) CExViewController *viewController;
+@property (strong, nonatomic) CExOrganizerViewController *viewController;
+
+- (void)pushRootViewController:(UIViewController *)anotherRootVC;
+
+- (void)popRootViewController;
 
 @end

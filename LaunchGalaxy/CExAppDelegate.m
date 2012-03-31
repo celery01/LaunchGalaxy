@@ -8,30 +8,48 @@
 
 #import "CExAppDelegate.h"
 
-#import "CExViewController.h"
+#import "CExOrganizerViewController.h"
+
+
+@interface CExAppDelegate ()
+
+@property (readonly) NSMutableArray *viewControllerStack;
+
+@end
 
 @implementation CExAppDelegate
-
+{
+    NSMutableArray          *stack_;
+}
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+@synthesize viewControllerStack = stack_;
+
 
 - (void)dealloc
 {
     [_window release];
     [_viewController release];
+    [stack_ release];
+    
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    stack_ = [[NSMutableArray alloc] init];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[[CExViewController alloc] initWithNibName:@"CExViewController_iPhone" bundle:nil] autorelease];
+        self.viewController = [[[CExOrganizerViewController alloc] initWithNibName:@"CExOrganizerViewController_iPhone" bundle:nil] autorelease];
     } else {
-        self.viewController = [[[CExViewController alloc] initWithNibName:@"CExViewController_iPad" bundle:nil] autorelease];
+        self.viewController = [[[CExOrganizerViewController alloc] initWithNibName:@"CExOrganizerViewController_iPad" bundle:nil] autorelease];
     }
+    
     self.window.rootViewController = self.viewController;
+    [self.viewControllerStack addObject:self.window.rootViewController];
+
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -62,5 +80,43 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)pushRootViewController:(UIViewController *)anotherRootVC
+{
+    [self.viewControllerStack addObject:anotherRootVC];
+
+    [UIView transitionFromView:self.window.rootViewController.view
+                        toView:anotherRootVC.view
+                      duration:1.0
+                       options:UIViewAnimationOptionTransitionFlipFromBottom
+                    completion:^(BOOL finished) {
+                        self.window.rootViewController = anotherRootVC;
+                    }];
+    
+}
+
+- (void)popRootViewController
+{
+    [self.viewControllerStack removeLastObject];
+    
+    UIViewController *theRootVC = [self.viewControllerStack lastObject];
+    
+    NSAssert((theRootVC != nil),@"viewController stack get wrong error!");
+    
+    [UIView transitionFromView:self.window.rootViewController.view
+                        toView:theRootVC.view
+                      duration:1.0
+                       options:UIViewAnimationOptionTransitionFlipFromBottom
+                    completion:^(BOOL finished) {
+                        self.window.rootViewController = theRootVC;
+                    }];
+}
+
+- (IBAction)backToTests:(id)sender
+{
+    [self popRootViewController];
+}
+
+
 
 @end

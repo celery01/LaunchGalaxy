@@ -13,9 +13,11 @@
 		A730F5A81526ECF700297F1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A730F5A61526ECF700297F1F /* InfoPlist.strings */; };
 		A730F5AA1526ECF700297F1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A730F5A91526ECF700297F1F /* main.m */; };
 		A730F5AE1526ECF700297F1F /* CExAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A730F5AD1526ECF700297F1F /* CExAppDelegate.m */; };
-		A730F5B11526ECF700297F1F /* CExViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A730F5B01526ECF700297F1F /* CExViewController.m */; };
-		A730F5B41526ECF700297F1F /* CExViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A730F5B21526ECF700297F1F /* CExViewController_iPhone.xib */; };
-		A730F5B71526ECF700297F1F /* CExViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A730F5B51526ECF700297F1F /* CExViewController_iPad.xib */; };
+		A730F5CD1527009C00297F1F /* CExOrganizerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A730F5CA1527009C00297F1F /* CExOrganizerViewController.m */; };
+		A730F5CE1527009C00297F1F /* CExOrganizerViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A730F5CB1527009C00297F1F /* CExOrganizerViewController_iPad.xib */; };
+		A730F5CF1527009C00297F1F /* CExOrganizerViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A730F5CC1527009C00297F1F /* CExOrganizerViewController_iPhone.xib */; };
+		A7DA890C15270D0800CBC62C /* CExPhoneSysLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DA890A15270D0800CBC62C /* CExPhoneSysLaunchViewController.m */; };
+		A7DA890D15270D0800CBC62C /* CExPhoneSysLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7DA890B15270D0800CBC62C /* CExPhoneSysLaunchViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,16 +25,19 @@
 		A730F59D1526ECF700297F1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A730F59F1526ECF700297F1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A730F5A11526ECF700297F1F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A730F5A51526ECF700297F1F /* LaunchGalaxy-Info.plist */ = {isa = PBXFileReference; path = "LaunchGalaxy-Info.plist"; sourceTree = "<group>"; };
+		A730F5A51526ECF700297F1F /* LaunchGalaxy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LaunchGalaxy-Info.plist"; sourceTree = "<group>"; };
 		A730F5A71526ECF700297F1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A730F5A91526ECF700297F1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A730F5AB1526ECF700297F1F /* LaunchGalaxy-Prefix.pch */ = {isa = PBXFileReference; path = "LaunchGalaxy-Prefix.pch"; sourceTree = "<group>"; };
-		A730F5AC1526ECF700297F1F /* CExAppDelegate.h */ = {isa = PBXFileReference; path = CExAppDelegate.h; sourceTree = "<group>"; };
+		A730F5AB1526ECF700297F1F /* LaunchGalaxy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LaunchGalaxy-Prefix.pch"; sourceTree = "<group>"; };
+		A730F5AC1526ECF700297F1F /* CExAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CExAppDelegate.h; sourceTree = "<group>"; };
 		A730F5AD1526ECF700297F1F /* CExAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CExAppDelegate.m; sourceTree = "<group>"; };
-		A730F5AF1526ECF700297F1F /* CExViewController.h */ = {isa = PBXFileReference; path = CExViewController.h; sourceTree = "<group>"; };
-		A730F5B01526ECF700297F1F /* CExViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CExViewController.m; sourceTree = "<group>"; };
-		A730F5B31526ECF700297F1F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CExViewController_iPhone.xib; sourceTree = "<group>"; };
-		A730F5B61526ECF700297F1F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CExViewController_iPad.xib; sourceTree = "<group>"; };
+		A730F5C91527009C00297F1F /* CExOrganizerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExOrganizerViewController.h; sourceTree = "<group>"; };
+		A730F5CA1527009C00297F1F /* CExOrganizerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExOrganizerViewController.m; sourceTree = "<group>"; };
+		A730F5CB1527009C00297F1F /* CExOrganizerViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CExOrganizerViewController_iPad.xib; sourceTree = "<group>"; };
+		A730F5CC1527009C00297F1F /* CExOrganizerViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CExOrganizerViewController_iPhone.xib; sourceTree = "<group>"; };
+		A7DA890915270D0800CBC62C /* CExPhoneSysLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExPhoneSysLaunchViewController.h; sourceTree = "<group>"; };
+		A7DA890A15270D0800CBC62C /* CExPhoneSysLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExPhoneSysLaunchViewController.m; sourceTree = "<group>"; };
+		A7DA890B15270D0800CBC62C /* CExPhoneSysLaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CExPhoneSysLaunchViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				A730F5A31526ECF700297F1F /* LaunchGalaxy */,
-				A730F59C1526ECF700297F1F /* Frameworks */,
 				A730F59A1526ECF700297F1F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,18 +78,19 @@
 				A730F5A11526ECF700297F1F /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A730F5A31526ECF700297F1F /* LaunchGalaxy */ = {
 			isa = PBXGroup;
 			children = (
+				A7DA890915270D0800CBC62C /* CExPhoneSysLaunchViewController.h */,
+				A7DA890A15270D0800CBC62C /* CExPhoneSysLaunchViewController.m */,
+				A7DA890B15270D0800CBC62C /* CExPhoneSysLaunchViewController.xib */,
 				A730F5AC1526ECF700297F1F /* CExAppDelegate.h */,
 				A730F5AD1526ECF700297F1F /* CExAppDelegate.m */,
-				A730F5AF1526ECF700297F1F /* CExViewController.h */,
-				A730F5B01526ECF700297F1F /* CExViewController.m */,
-				A730F5B21526ECF700297F1F /* CExViewController_iPhone.xib */,
-				A730F5B51526ECF700297F1F /* CExViewController_iPad.xib */,
 				A730F5A41526ECF700297F1F /* Supporting Files */,
+				A730F59C1526ECF700297F1F /* Frameworks */,
 			);
 			path = LaunchGalaxy;
 			sourceTree = "<group>";
@@ -93,12 +98,24 @@
 		A730F5A41526ECF700297F1F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A730F5C81527009C00297F1F /* Organizer */,
 				A730F5A51526ECF700297F1F /* LaunchGalaxy-Info.plist */,
 				A730F5A61526ECF700297F1F /* InfoPlist.strings */,
 				A730F5A91526ECF700297F1F /* main.m */,
 				A730F5AB1526ECF700297F1F /* LaunchGalaxy-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A730F5C81527009C00297F1F /* Organizer */ = {
+			isa = PBXGroup;
+			children = (
+				A730F5C91527009C00297F1F /* CExOrganizerViewController.h */,
+				A730F5CA1527009C00297F1F /* CExOrganizerViewController.m */,
+				A730F5CB1527009C00297F1F /* CExOrganizerViewController_iPad.xib */,
+				A730F5CC1527009C00297F1F /* CExOrganizerViewController_iPhone.xib */,
+			);
+			path = Organizer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,8 +170,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A730F5A81526ECF700297F1F /* InfoPlist.strings in Resources */,
-				A730F5B41526ECF700297F1F /* CExViewController_iPhone.xib in Resources */,
-				A730F5B71526ECF700297F1F /* CExViewController_iPad.xib in Resources */,
+				A730F5CE1527009C00297F1F /* CExOrganizerViewController_iPad.xib in Resources */,
+				A730F5CF1527009C00297F1F /* CExOrganizerViewController_iPhone.xib in Resources */,
+				A7DA890D15270D0800CBC62C /* CExPhoneSysLaunchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +185,8 @@
 			files = (
 				A730F5AA1526ECF700297F1F /* main.m in Sources */,
 				A730F5AE1526ECF700297F1F /* CExAppDelegate.m in Sources */,
-				A730F5B11526ECF700297F1F /* CExViewController.m in Sources */,
+				A730F5CD1527009C00297F1F /* CExOrganizerViewController.m in Sources */,
+				A7DA890C15270D0800CBC62C /* CExPhoneSysLaunchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,22 +199,6 @@
 				A730F5A71526ECF700297F1F /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		A730F5B21526ECF700297F1F /* CExViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A730F5B31526ECF700297F1F /* en */,
-			);
-			name = CExViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		A730F5B51526ECF700297F1F /* CExViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A730F5B61526ECF700297F1F /* en */,
-			);
-			name = CExViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -287,6 +290,7 @@
 				A730F5BC1526ECF700297F1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
