@@ -22,11 +22,7 @@
 
 @interface CExOrganizerViewController : UITableViewController
 
-+ (void)AddCategory:(NSString *)theCategory;
 
-+ (void)AddItem:(NSString *)theItem;
-
-+ (void)AddItem:(NSString *)theItem forCategory:(NSString *)theCategory;
 
 @end
 
@@ -36,5 +32,11 @@
 + (NSMutableArray *)sharedCategories;
 
 + (void)AddCategory:(NSString *)theCategory;
+
+
+
++ (void)AddItem:(NSString *)theItem;
+
++ (void)AddItem:(NSString *)theItem forCategory:(NSString *)theCategory;
 
 @end

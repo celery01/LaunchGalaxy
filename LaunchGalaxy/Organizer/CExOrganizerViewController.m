@@ -12,6 +12,7 @@
 #define kCExOrganizerCategoryTitle          @"kCOCT"
 #define kCExOrganzierItems                  @"kCOI"
 
+#define kCExClassPrefix                     @"CEx"
 
 NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
 
@@ -22,6 +23,7 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
 
 @interface CExOrganizerViewController ()
 
+- (void)pushViewControllerNamed:(NSString *)viewControllerName;
 @end
 
 @implementation CExOrganizerViewController
@@ -75,16 +77,25 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
         
         categoryTitle = kCExOrganizerDefaultCategory;
     }
-
+    
+    
+    BOOL existInCategories = NO;
     for(NSMutableDictionary *categoryDict in categories) {
         if([[categoryDict objectForKey:kCExOrganizerCategoryTitle] isEqualToString:categoryTitle]) {
             
             NSMutableArray *items= [categoryDict objectForKey:kCExOrganzierItems];
             NSAssert((items != nil),@"item shouldn't be nil");
             [items addObject:theItem];
-            
+            existInCategories = YES;
             break;
         }                
+    }
+    
+    if(!existInCategories) {
+        [categories addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                               categoryTitle,                               kCExOrganizerCategoryTitle,
+                               [NSMutableArray arrayWithObject:theItem],    kCExOrganzierItems,
+                               nil]];
     }
 }
 
@@ -162,6 +173,13 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
     return items.count;
 }
 
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSMutableDictionary *cateDict = [[CExOrganizerViewController sharedCategories] objectAtIndex:section];
+    return [cateDict objectForKey:kCExOrganizerCategoryTitle];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -177,7 +195,20 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
     
     NSMutableArray *items = [categoryDict objectForKey:kCExOrganzierItems];
     
-    cell.textLabel.text = [items objectAtIndex:indexPath.row];
+    NSString *rawClassTitle = [items objectAtIndex:indexPath.row];
+    NSString *titleLabelText = rawClassTitle;
+
+    NSRange prefixRange = [titleLabelText rangeOfString:kCExClassPrefix];
+    
+    if(prefixRange.location != NSNotFound) 
+        titleLabelText = [rawClassTitle substringFromIndex:prefixRange.location+prefixRange.length];
+    
+    NSRange suffixRange = [titleLabelText rangeOfString:@"ViewController"];
+
+    if(suffixRange.location != NSNotFound)
+        titleLabelText = [titleLabelText substringToIndex:suffixRange.location];
+    
+    cell.textLabel.text = titleLabelText;
     
     return cell;
 }
@@ -196,48 +227,69 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
     
     NSString *classString = [items objectAtIndex:indexPath.row];
     
-    /*    const char *cString = [classString cStringUsingEncoding:NSUTF8StringEncoding];
-     
-     id classObject = objc_getClass(cString);
-     
-     id theViewControllerInstance = class_createInstance(classObject, 0);
-     */
-    
-    NSString *xibName = nil;
-    NSString *newXibName = nil;
-    //
-    //  checking whether the resource exists, if not using name .xib 
-    //
-    NSBundle *mainBundle = [NSBundle mainBundle];
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        newXibName = [classString stringByAppendingString:@"_iPhone"];
-    }
-    else {
-        newXibName = [classString stringByAppendingString:@"_iPad"];
-    }
-    
-    NSString *resourcePath = [mainBundle pathForResource:newXibName ofType:@"nib"];
-    
-    if(!resourcePath) {
-        xibName = classString;
-    }
-    else {
-        xibName = newXibName;
-    }
-    
-    id theViewController = [[NSClassFromString(classString) alloc] initWithNibName:xibName bundle:nil];
-
-    CExAppDelegate* appDelegate = (CExAppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    [appDelegate pushRootViewController:theViewController];    
-    
-//    if(self.navigationController)
-//        self.navigationController = [[UINavigationController alloc] initWithRootViewController:self];
-//    
-//    // Pass the selected object to the new view controller.
-//    [self.navigationController pushViewController:theViewController animated:YES];
-    [theViewController release];
+    [self pushViewControllerNamed:classString];
 }
+
+
+#pragma mark Helper
+- (void)pushViewControllerNamed:(NSString *)viewControllerClassName
+{
+    @try {
+        /*    
+         const char *cString = [classString cStringUsingEncoding:NSUTF8StringEncoding];
+         
+         id classObject = objc_getClass(cString);
+         
+         id theViewControllerInstance = class_createInstance(classObject, 0);
+         */
+        
+        NSString *xibName = nil;
+        NSString *newXibName = nil;
+        //
+        //  checking whether the resource exists, if not using name .xib 
+        //
+        NSBundle *mainBundle = [NSBundle mainBundle];
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            newXibName = [viewControllerClassName stringByAppendingString:@"_iPhone"];
+        }
+        else {
+            newXibName = [viewControllerClassName stringByAppendingString:@"_iPad"];
+        }
+        
+        NSString *resourcePath = [mainBundle pathForResource:newXibName ofType:@"nib"];
+        
+        if(!resourcePath) {
+            xibName = viewControllerClassName;
+        }
+        else {
+            xibName = newXibName;
+        }
+        
+        id theViewController = [[NSClassFromString(viewControllerClassName) alloc] initWithNibName:xibName bundle:nil];
+        
+        CExAppDelegate* appDelegate = (CExAppDelegate *)[UIApplication sharedApplication].delegate;
+        
+        [appDelegate pushRootViewController:theViewController];    
+        
+        [theViewController release];
+        
+    }
+    @catch (NSException *exception) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning!"
+                                                        message:[NSString stringWithFormat:@"Could not Found Class Named:%@",viewControllerClassName]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        
+        [alert show];
+        
+        [alert release];
+    }
+    @finally {
+        
+    }
+}
+
 
 @end

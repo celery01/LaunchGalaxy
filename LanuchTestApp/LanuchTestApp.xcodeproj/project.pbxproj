@@ -1,0 +1,294 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A73FA7C71532A8D20009A324 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73FA7C61532A8D20009A324 /* UIKit.framework */; };
+		A73FA7C91532A8D20009A324 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73FA7C81532A8D20009A324 /* Foundation.framework */; };
+		A73FA7CB1532A8D20009A324 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73FA7CA1532A8D20009A324 /* CoreGraphics.framework */; };
+		A73FA7D11532A8D20009A324 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A73FA7CF1532A8D20009A324 /* InfoPlist.strings */; };
+		A73FA7D31532A8D20009A324 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FA7D21532A8D20009A324 /* main.m */; };
+		A73FA7D71532A8D20009A324 /* CExAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FA7D61532A8D20009A324 /* CExAppDelegate.m */; };
+		A73FA7DA1532A8D20009A324 /* CExViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FA7D91532A8D20009A324 /* CExViewController.m */; };
+		A73FA7DD1532A8D20009A324 /* CExViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A73FA7DB1532A8D20009A324 /* CExViewController_iPhone.xib */; };
+		A73FA7E01532A8D20009A324 /* CExViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A73FA7DE1532A8D20009A324 /* CExViewController_iPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A73FA7C21532A8D20009A324 /* LanuchTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LanuchTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A73FA7C61532A8D20009A324 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A73FA7C81532A8D20009A324 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A73FA7CA1532A8D20009A324 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A73FA7CE1532A8D20009A324 /* LanuchTestApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LanuchTestApp-Info.plist"; sourceTree = "<group>"; };
+		A73FA7D01532A8D20009A324 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A73FA7D21532A8D20009A324 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A73FA7D41532A8D20009A324 /* LanuchTestApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LanuchTestApp-Prefix.pch"; sourceTree = "<group>"; };
+		A73FA7D51532A8D20009A324 /* CExAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CExAppDelegate.h; sourceTree = "<group>"; };
+		A73FA7D61532A8D20009A324 /* CExAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CExAppDelegate.m; sourceTree = "<group>"; };
+		A73FA7D81532A8D20009A324 /* CExViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CExViewController.h; sourceTree = "<group>"; };
+		A73FA7D91532A8D20009A324 /* CExViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CExViewController.m; sourceTree = "<group>"; };
+		A73FA7DC1532A8D20009A324 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CExViewController_iPhone.xib; sourceTree = "<group>"; };
+		A73FA7DF1532A8D20009A324 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CExViewController_iPad.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A73FA7BF1532A8D20009A324 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A73FA7C71532A8D20009A324 /* UIKit.framework in Frameworks */,
+				A73FA7C91532A8D20009A324 /* Foundation.framework in Frameworks */,
+				A73FA7CB1532A8D20009A324 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A73FA7B71532A8D20009A324 = {
+			isa = PBXGroup;
+			children = (
+				A73FA7CC1532A8D20009A324 /* LanuchTestApp */,
+				A73FA7C51532A8D20009A324 /* Frameworks */,
+				A73FA7C31532A8D20009A324 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A73FA7C31532A8D20009A324 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A73FA7C21532A8D20009A324 /* LanuchTestApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A73FA7C51532A8D20009A324 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A73FA7C61532A8D20009A324 /* UIKit.framework */,
+				A73FA7C81532A8D20009A324 /* Foundation.framework */,
+				A73FA7CA1532A8D20009A324 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A73FA7CC1532A8D20009A324 /* LanuchTestApp */ = {
+			isa = PBXGroup;
+			children = (
+				A73FA7D51532A8D20009A324 /* CExAppDelegate.h */,
+				A73FA7D61532A8D20009A324 /* CExAppDelegate.m */,
+				A73FA7D81532A8D20009A324 /* CExViewController.h */,
+				A73FA7D91532A8D20009A324 /* CExViewController.m */,
+				A73FA7DB1532A8D20009A324 /* CExViewController_iPhone.xib */,
+				A73FA7DE1532A8D20009A324 /* CExViewController_iPad.xib */,
+				A73FA7CD1532A8D20009A324 /* Supporting Files */,
+			);
+			path = LanuchTestApp;
+			sourceTree = "<group>";
+		};
+		A73FA7CD1532A8D20009A324 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A73FA7CE1532A8D20009A324 /* LanuchTestApp-Info.plist */,
+				A73FA7CF1532A8D20009A324 /* InfoPlist.strings */,
+				A73FA7D21532A8D20009A324 /* main.m */,
+				A73FA7D41532A8D20009A324 /* LanuchTestApp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A73FA7C11532A8D20009A324 /* LanuchTestApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A73FA7E31532A8D20009A324 /* Build configuration list for PBXNativeTarget "LanuchTestApp" */;
+			buildPhases = (
+				A73FA7BE1532A8D20009A324 /* Sources */,
+				A73FA7BF1532A8D20009A324 /* Frameworks */,
+				A73FA7C01532A8D20009A324 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LanuchTestApp;
+			productName = LanuchTestApp;
+			productReference = A73FA7C21532A8D20009A324 /* LanuchTestApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A73FA7B91532A8D20009A324 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CEx;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = A73FA7BC1532A8D20009A324 /* Build configuration list for PBXProject "LanuchTestApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A73FA7B71532A8D20009A324;
+			productRefGroup = A73FA7C31532A8D20009A324 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A73FA7C11532A8D20009A324 /* LanuchTestApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A73FA7C01532A8D20009A324 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A73FA7D11532A8D20009A324 /* InfoPlist.strings in Resources */,
+				A73FA7DD1532A8D20009A324 /* CExViewController_iPhone.xib in Resources */,
+				A73FA7E01532A8D20009A324 /* CExViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A73FA7BE1532A8D20009A324 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A73FA7D31532A8D20009A324 /* main.m in Sources */,
+				A73FA7D71532A8D20009A324 /* CExAppDelegate.m in Sources */,
+				A73FA7DA1532A8D20009A324 /* CExViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A73FA7CF1532A8D20009A324 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A73FA7D01532A8D20009A324 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A73FA7DB1532A8D20009A324 /* CExViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A73FA7DC1532A8D20009A324 /* en */,
+			);
+			name = CExViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		A73FA7DE1532A8D20009A324 /* CExViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A73FA7DF1532A8D20009A324 /* en */,
+			);
+			name = CExViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A73FA7E11532A8D20009A324 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A73FA7E21532A8D20009A324 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A73FA7E41532A8D20009A324 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LanuchTestApp/LanuchTestApp-Prefix.pch";
+				INFOPLIST_FILE = "LanuchTestApp/LanuchTestApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A73FA7E51532A8D20009A324 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LanuchTestApp/LanuchTestApp-Prefix.pch";
+				INFOPLIST_FILE = "LanuchTestApp/LanuchTestApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A73FA7BC1532A8D20009A324 /* Build configuration list for PBXProject "LanuchTestApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A73FA7E11532A8D20009A324 /* Debug */,
+				A73FA7E21532A8D20009A324 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A73FA7E31532A8D20009A324 /* Build configuration list for PBXNativeTarget "LanuchTestApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A73FA7E41532A8D20009A324 /* Debug */,
+				A73FA7E51532A8D20009A324 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A73FA7B91532A8D20009A324 /* Project object */;
+}

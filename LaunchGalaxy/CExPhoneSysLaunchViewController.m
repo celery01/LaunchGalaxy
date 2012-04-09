@@ -20,7 +20,8 @@
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
-    [CExOrganizerViewController AddItem:NSStringFromClass([self class])];
+    [CExOrganizerViewController AddItem:NSStringFromClass([self class])
+                            forCategory:@"LaunchTests"];
     
     [pool release];pool=nil;
 }
@@ -55,33 +56,51 @@
 - (IBAction)launchPhone:(id)sender
 {
     NSURL *phoneUrl = [NSURL URLWithString:@"tel:8613901938801"];
-    [[UIApplication sharedApplication] openURL:phoneUrl];
 
+    [self openUrlDelegate:phoneUrl];
 }
 
 - (IBAction)launchGMaps:(id)sender
 {
-    NSURL *mapUrl = [NSURL URLWithString:@"http://maps.google.com/maps?q=cupertino"];
-    [[UIApplication sharedApplication] openURL:mapUrl];
+    NSURL *mapUrl = [NSURL URLWithString:@"http://maps.google.com/maps?q=shanghai"];
+    
+    [self openUrlDelegate:mapUrl];
 }
 
 - (IBAction)launchText:(id)sender
 {
-    NSURL *textUrl = [NSURL URLWithString:@"sms:/maps?q=cupertino"];
-    [[UIApplication sharedApplication] openURL:textUrl];
+    NSURL *textUrl = [NSURL URLWithString:@"sms:/maps?q=shanghai"];
+    
+    [self openUrlDelegate:textUrl];
 }
 
 - (IBAction)launchiTunes:(id)sender
 {
     NSURL *itunesUrl = [NSURL URLWithString:@"http://itunes.apple.com/app/posing-app/id492085243?mt=8"];
-    [[UIApplication sharedApplication] openURL:itunesUrl];
+    [self openUrlDelegate:itunesUrl];
+
 }
 
 - (IBAction)lauchMail:(id)sender
 {
     NSURL *mailUrl = [NSURL URLWithString:@"mailto:foo@example.com?cc=bar@example.com&subject=Greetings%20from%20Cupertino!&body=Wish%20you%20were%20here!"];
-    [[UIApplication sharedApplication] openURL:mailUrl];
+    [self openUrlDelegate:mailUrl];
+}
 
+- (void)openUrlDelegate:(NSURL *)targetUrl
+{
+    if([[UIApplication sharedApplication] canOpenURL:targetUrl]) {
+        [[UIApplication sharedApplication] openURL:targetUrl];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Could not open!"
+                                                        message:[NSString stringWithFormat:@"%@",targetUrl]
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
 }
 
 @end

@@ -10,6 +10,12 @@
 
 #import "CExOrganizerViewController.h"
 
+#import "CExKit.h"
+
+
+#define STD_DEBUG_LOG_ON (1)
+
+
 
 @interface CExAppDelegate ()
 
@@ -22,14 +28,14 @@
     NSMutableArray          *stack_;
 }
 @synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize organizerViewController = _organizerViewController;
 @synthesize viewControllerStack = stack_;
 
 
 - (void)dealloc
 {
     [_window release];
-    [_viewController release];
+    [_organizerViewController release];
     [stack_ release];
     
     [super dealloc];
@@ -37,17 +43,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    FS_OPEN();
+    FSLOG(@"App:%@ LaunchOptions:%@",application,launchOptions);
+    FS_CLOSE();
+
     stack_ = [[NSMutableArray alloc] init];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[[CExOrganizerViewController alloc] initWithNibName:@"CExOrganizerViewController_iPhone" bundle:nil] autorelease];
+        self.organizerViewController = [[[CExOrganizerViewController alloc] initWithNibName:@"CExOrganizerViewController_iPhone" bundle:nil] autorelease];
     } else {
-        self.viewController = [[[CExOrganizerViewController alloc] initWithNibName:@"CExOrganizerViewController_iPad" bundle:nil] autorelease];
+        self.organizerViewController = [[[CExOrganizerViewController alloc] initWithNibName:@"CExOrganizerViewController_iPad" bundle:nil] autorelease];
     }
     
-    self.window.rootViewController = self.viewController;
+    self.window.rootViewController = self.organizerViewController;
     [self.viewControllerStack addObject:self.window.rootViewController];
 
     [self.window makeKeyAndVisible];
@@ -81,32 +92,68 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    DLOGOBJECT(application);
+    DLOGOBJECT(url);
+    DLOGOBJECT(sourceApplication);
+    DLOGOBJECT(annotation);
+    
+    FS_OPEN();
+    FSLOGOBJECT(application);
+    FSLOGOBJECT(url);
+    FSLOGOBJECT(sourceApplication);
+    FSLOGOBJECT(annotation);
+    FS_CLOSE();
+    
+    [url query];
+    
+    // Pop the testRootViewController , let CExOriganzierViewController to be the rootViewController
+    if(self.viewControllerStack.count >= 2)
+        [self popRootViewController:UIViewAnimationOptionTransitionCrossDissolve];
+    
+    
+    return YES;
+}
+
+//Every single test has its own typical RootViewController
 - (void)pushRootViewController:(UIViewController *)anotherRootVC
 {
-    [self.viewControllerStack addObject:anotherRootVC];
+    [self pushRootViewController:anotherRootVC
+                         options:UIViewAnimationOptionTransitionFlipFromBottom];
+}
 
+- (void)pushRootViewController:(UIViewController *)anotherRootVC options:(UIViewAnimationOptions)option
+{
+    [self.viewControllerStack addObject:anotherRootVC];
+    
     [UIView transitionFromView:self.window.rootViewController.view
                         toView:anotherRootVC.view
                       duration:1.0
-                       options:UIViewAnimationOptionTransitionFlipFromBottom
+                       options:option
                     completion:^(BOOL finished) {
                         self.window.rootViewController = anotherRootVC;
                     }];
-    
 }
 
+//Pop the toppest viewController in the stack
 - (void)popRootViewController
+{
+    [self popRootViewController:UIViewAnimationOptionTransitionFlipFromBottom];
+}
+
+- (void)popRootViewController:(UIViewAnimationOptions)option
 {
     [self.viewControllerStack removeLastObject];
     
     UIViewController *theRootVC = [self.viewControllerStack lastObject];
     
     NSAssert((theRootVC != nil),@"viewController stack get wrong error!");
-    
+        
     [UIView transitionFromView:self.window.rootViewController.view
                         toView:theRootVC.view
                       duration:1.0
-                       options:UIViewAnimationOptionTransitionFlipFromBottom
+                       options:option
                     completion:^(BOOL finished) {
                         self.window.rootViewController = theRootVC;
                     }];

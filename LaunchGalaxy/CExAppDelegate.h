@@ -16,7 +16,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) CExOrganizerViewController *viewController;
+@property (strong, nonatomic) CExOrganizerViewController *organizerViewController;
 
 - (void)pushRootViewController:(UIViewController *)anotherRootVC;
 
