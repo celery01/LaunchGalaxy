@@ -7,7 +7,7 @@
 //
 
 #import "CExPhoneSysLaunchViewController.h"
-#import "CExOrganizerViewController.h"
+#import "CExOrganizerRegistery.h"
 
 
 @interface CExPhoneSysLaunchViewController ()
@@ -20,7 +20,7 @@
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
-    [CExOrganizerViewController AddItem:NSStringFromClass([self class])
+    [CExOrganizerRegistery AddItem:NSStringFromClass([self class])
                             forCategory:@"LaunchTests"];
     
     [pool release];pool=nil;

@@ -21,6 +21,9 @@
 		A73FA8001532C5A20009A324 /* NSURL+CExWorkingDirectories.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FA7FF1532C5A20009A324 /* NSURL+CExWorkingDirectories.m */; };
 		A7DA890C15270D0800CBC62C /* CExPhoneSysLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DA890A15270D0800CBC62C /* CExPhoneSysLaunchViewController.m */; };
 		A7DA890D15270D0800CBC62C /* CExPhoneSysLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7DA890B15270D0800CBC62C /* CExPhoneSysLaunchViewController.xib */; };
+		A7F6180815367FBC009CA7BC /* CExGCDHelloWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F6180615367FBC009CA7BC /* CExGCDHelloWorldViewController.m */; };
+		A7F6180915367FBC009CA7BC /* CExGCDHelloWorldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7F6180715367FBC009CA7BC /* CExGCDHelloWorldViewController.xib */; };
+		A7F618111536A6BE009CA7BC /* CExOrganizerRegistery.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F618101536A6BE009CA7BC /* CExOrganizerRegistery.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,11 @@
 		A7DA890915270D0800CBC62C /* CExPhoneSysLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExPhoneSysLaunchViewController.h; sourceTree = "<group>"; };
 		A7DA890A15270D0800CBC62C /* CExPhoneSysLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExPhoneSysLaunchViewController.m; sourceTree = "<group>"; };
 		A7DA890B15270D0800CBC62C /* CExPhoneSysLaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CExPhoneSysLaunchViewController.xib; sourceTree = "<group>"; };
+		A7F6180515367FBC009CA7BC /* CExGCDHelloWorldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExGCDHelloWorldViewController.h; sourceTree = "<group>"; };
+		A7F6180615367FBC009CA7BC /* CExGCDHelloWorldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExGCDHelloWorldViewController.m; sourceTree = "<group>"; };
+		A7F6180715367FBC009CA7BC /* CExGCDHelloWorldViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CExGCDHelloWorldViewController.xib; sourceTree = "<group>"; };
+		A7F6180F1536A6BE009CA7BC /* CExOrganizerRegistery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExOrganizerRegistery.h; sourceTree = "<group>"; };
+		A7F618101536A6BE009CA7BC /* CExOrganizerRegistery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExOrganizerRegistery.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +102,7 @@
 		A730F5A31526ECF700297F1F /* LaunchGalaxy */ = {
 			isa = PBXGroup;
 			children = (
+				A7F6180B15367FC1009CA7BC /* GCDHelloWorld */,
 				A73FA7F01532B4C50009A324 /* CustomAppLaunch */,
 				A73FA7EF1532B4BB0009A324 /* SysLaunch */,
 				A730F5AC1526ECF700297F1F /* CExAppDelegate.h */,
@@ -120,6 +129,8 @@
 		A730F5C81527009C00297F1F /* Organizer */ = {
 			isa = PBXGroup;
 			children = (
+				A7F6180F1536A6BE009CA7BC /* CExOrganizerRegistery.h */,
+				A7F618101536A6BE009CA7BC /* CExOrganizerRegistery.m */,
 				A730F5C91527009C00297F1F /* CExOrganizerViewController.h */,
 				A730F5CA1527009C00297F1F /* CExOrganizerViewController.m */,
 				A730F5CB1527009C00297F1F /* CExOrganizerViewController_iPad.xib */,
@@ -158,6 +169,16 @@
 				A73FA7FF1532C5A20009A324 /* NSURL+CExWorkingDirectories.m */,
 			);
 			path = CExKit;
+			sourceTree = "<group>";
+		};
+		A7F6180B15367FC1009CA7BC /* GCDHelloWorld */ = {
+			isa = PBXGroup;
+			children = (
+				A7F6180715367FBC009CA7BC /* CExGCDHelloWorldViewController.xib */,
+				A7F6180515367FBC009CA7BC /* CExGCDHelloWorldViewController.h */,
+				A7F6180615367FBC009CA7BC /* CExGCDHelloWorldViewController.m */,
+			);
+			name = GCDHelloWorld;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +237,7 @@
 				A730F5CF1527009C00297F1F /* CExOrganizerViewController_iPhone.xib in Resources */,
 				A7DA890D15270D0800CBC62C /* CExPhoneSysLaunchViewController.xib in Resources */,
 				A73FA7EA1532AA8A0009A324 /* CExCustomAppLanuchViewController.xib in Resources */,
+				A7F6180915367FBC009CA7BC /* CExGCDHelloWorldViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +254,8 @@
 				A7DA890C15270D0800CBC62C /* CExPhoneSysLaunchViewController.m in Sources */,
 				A73FA7E91532AA8A0009A324 /* CExCustomAppLanuchViewController.m in Sources */,
 				A73FA8001532C5A20009A324 /* NSURL+CExWorkingDirectories.m in Sources */,
+				A7F6180815367FBC009CA7BC /* CExGCDHelloWorldViewController.m in Sources */,
+				A7F618111536A6BE009CA7BC /* CExOrganizerRegistery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

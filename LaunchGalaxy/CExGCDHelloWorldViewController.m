@@ -1,27 +1,26 @@
 //
-//  CExCustomAppLanuchViewController.m
+//  CExGCDHelloWorldViewController.m
 //  LaunchGalaxy
 //
-//  Created by Daniel Lin on 4/9/12.
+//  Created by Daniel Lin on 4/12/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "CExCustomAppLanuchViewController.h"
+#import "CExGCDHelloWorldViewController.h"
 #import "CExOrganizerRegistery.h"
 
-@interface CExCustomAppLanuchViewController ()
+@interface CExGCDHelloWorldViewController ()
 
 @end
 
-@implementation CExCustomAppLanuchViewController
-@synthesize resultTextView;
+@implementation CExGCDHelloWorldViewController
 
 + (void)load
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
     [CExOrganizerRegistery AddItem:NSStringFromClass([self class])
-                            forCategory:@"LaunchTests"];    
+                            forCategory:@"GCDTests"];    
     [pool release];pool=nil;
 }
 
@@ -43,24 +42,13 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    self.resultTextView = nil;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (IBAction)returnToCaller:(id)sender
-{
-    NSURL *url = [NSURL URLWithString:@"LanuchTestApp://testBack?successed=YES"];
-    [[UIApplication sharedApplication] openURL:url];
-    
 }
 
 @end

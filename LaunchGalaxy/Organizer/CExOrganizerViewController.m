@@ -7,120 +7,19 @@
 //
 
 #import "CExOrganizerViewController.h"
+#import "CExOrganizerRegistery.h"
 #import "CExAppDelegate.h"
 
-#define kCExOrganizerCategoryTitle          @"kCOCT"
-#define kCExOrganzierItems                  @"kCOI"
-
 #define kCExClassPrefix                     @"CEx"
-
-NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
-
-@implementation CExOrganizerItem
-@synthesize parentItem,itemTitle,itemCategory;
-@end
-
+#define kCExClassSuffix                     @"ViewController"
 
 @interface CExOrganizerViewController ()
 
 - (void)pushViewControllerNamed:(NSString *)viewControllerName;
+
 @end
 
 @implementation CExOrganizerViewController
-
-#if FEATURE_OPEN
-
-+ (NSMutableArray *)sharedItemStore
-{
-    static NSMutableArray *gItemStore = nil;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        gItemStore = [[NSMutableArray alloc] init];
-    });
-    return gItemStore;
-}
-
-#endif
-
-
-#pragma mark - RegisteryCategory
-+ (NSMutableArray *)sharedCategories
-{   
-    static NSMutableArray *gCategories = nil;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        gCategories = [[NSMutableArray alloc] init];
-    });
-    
-    return gCategories;
-}
-
-
-+ (void)AddItem:(NSString *)theItem
-{
-    [CExOrganizerViewController AddItem:theItem 
-                            forCategory:nil];
-}
-
-+ (void)AddItem:(NSString *)theItem forCategory:(NSString *)theCategory
-{
-    NSString *categoryTitle = theCategory;
-    NSMutableArray *categories = [CExOrganizerViewController sharedCategories];
-
-    if(!categoryTitle) {
-        // check the default category
-        if(categories.count == 0) {
-            [CExOrganizerViewController AddCategory:kCExOrganizerDefaultCategory];
-        }
-        
-        categoryTitle = kCExOrganizerDefaultCategory;
-    }
-    
-    
-    BOOL existInCategories = NO;
-    for(NSMutableDictionary *categoryDict in categories) {
-        if([[categoryDict objectForKey:kCExOrganizerCategoryTitle] isEqualToString:categoryTitle]) {
-            
-            NSMutableArray *items= [categoryDict objectForKey:kCExOrganzierItems];
-            NSAssert((items != nil),@"item shouldn't be nil");
-            [items addObject:theItem];
-            existInCategories = YES;
-            break;
-        }                
-    }
-    
-    if(!existInCategories) {
-        [categories addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                               categoryTitle,                               kCExOrganizerCategoryTitle,
-                               [NSMutableArray arrayWithObject:theItem],    kCExOrganzierItems,
-                               nil]];
-    }
-}
-
-+ (void)AddCategory:(NSString *)theCategory 
-{
-    NSMutableArray *categories = [CExOrganizerViewController sharedCategories];
-    BOOL foundCategory = NO;
-    for (NSMutableDictionary *categoryDict in categories) {
-        if([[categoryDict valueForKey:kCExOrganizerCategoryTitle] isEqualToString:theCategory]) {
-            foundCategory = YES;
-            break;
-        }
-    }
-    
-    if(!foundCategory) {
-        NSMutableDictionary *mutableDict = [[[NSMutableDictionary alloc] init] autorelease];
-        
-        [mutableDict setObject:theCategory 
-                        forKey:kCExOrganizerCategoryTitle];
-        [mutableDict setObject:[NSMutableArray array]
-                        forKey:kCExOrganzierItems];
-        
-        [[CExOrganizerViewController sharedCategories] addObject:mutableDict];
-    }
-}
 
 #pragma mark - init
 - (id)initWithStyle:(UITableViewStyle)style
@@ -141,6 +40,8 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.tableView.delegate = self;
 }
 
 - (void)viewDidUnload
@@ -160,13 +61,13 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return [CExOrganizerViewController sharedCategories].count;
+    return [CExOrganizerRegistery sharedCategories].count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSMutableDictionary *cateDict = [[CExOrganizerViewController sharedCategories] objectAtIndex:section];
+    NSMutableDictionary *cateDict = [[CExOrganizerRegistery sharedCategories] objectAtIndex:section];
     
     NSMutableArray *items = [cateDict objectForKey:kCExOrganzierItems];
     
@@ -176,7 +77,7 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSMutableDictionary *cateDict = [[CExOrganizerViewController sharedCategories] objectAtIndex:section];
+    NSMutableDictionary *cateDict = [[CExOrganizerRegistery sharedCategories] objectAtIndex:section];
     return [cateDict objectForKey:kCExOrganizerCategoryTitle];
 }
 
@@ -189,7 +90,7 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    NSMutableDictionary *categoryDict = [[CExOrganizerViewController sharedCategories] objectAtIndex:indexPath.section];
+    NSMutableDictionary *categoryDict = [[CExOrganizerRegistery sharedCategories] objectAtIndex:indexPath.section];
     
     NSAssert((categoryDict != nil),@"category nil");
     
@@ -203,7 +104,7 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
     if(prefixRange.location != NSNotFound) 
         titleLabelText = [rawClassTitle substringFromIndex:prefixRange.location+prefixRange.length];
     
-    NSRange suffixRange = [titleLabelText rangeOfString:@"ViewController"];
+    NSRange suffixRange = [titleLabelText rangeOfString:kCExClassSuffix];
 
     if(suffixRange.location != NSNotFound)
         titleLabelText = [titleLabelText substringToIndex:suffixRange.location];
@@ -219,7 +120,7 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
 {
     // Navigation logic may go here. Create and push another view controller.
     
-    NSMutableDictionary *categoryDict = [[CExOrganizerViewController sharedCategories] objectAtIndex:indexPath.section];
+    NSMutableDictionary *categoryDict = [[CExOrganizerRegistery sharedCategories] objectAtIndex:indexPath.section];
     
     NSAssert((categoryDict != nil),@"category nil");
     
@@ -231,7 +132,7 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
 }
 
 
-#pragma mark Helper
+#pragma mark - Helper
 - (void)pushViewControllerNamed:(NSString *)viewControllerClassName
 {
     @try {
@@ -292,4 +193,49 @@ NSString *kCExOrganizerDefaultCategory = @"kCExOrganizerDefaultCategory";
 }
 
 
+#pragma mark - Scroll view Delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"%s ",__PRETTY_FUNCTION__);
+}
+
+// called on start of dragging (may require some time and or distance to move)
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    NSLog(@"%s ",__PRETTY_FUNCTION__);    
+}
+
+// called on finger up if the user dragged. velocity is in points/second. targetContentOffset may be changed to adjust where the scroll view comes to rest. not called when pagingEnabled is YES
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset 
+{
+        NSLog(@"%s ",__PRETTY_FUNCTION__);
+}
+
+// called on finger up if the user dragged. decelerate is true if it will continue moving afterwards
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+{
+        NSLog(@"%s ",__PRETTY_FUNCTION__);
+}
+   // called on finger up as we are moving
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+        NSLog(@"%s ",__PRETTY_FUNCTION__);
+}
+
+    // called when scroll view grinds to a halt
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+        NSLog(@"%s ",__PRETTY_FUNCTION__);
+};  
+
+// called when setContentOffset/scrollRectVisible:animated: finishes. not called if not animating
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+        NSLog(@"%s ",__PRETTY_FUNCTION__);
+}; 
+
+//- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView;   // return a yes if you want to scroll to the top. if not defined, assumes YES
+//- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView;      // called when scrolling animation finished. may be called immediately if already at top
+
+    
 @end
